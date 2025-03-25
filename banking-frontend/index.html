@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Banking System</h1>
+
+<!-- Tab Buttons -->
+<div class="tab-container">
+    <button class="tab-button active" onclick="openTab('openAccountTab')">Open Account</button>
+    <button class="tab-button" onclick="openTab('customerDetailsTab')">Customer Details</button>
+</div>
+
+<!-- Open Account Tab -->
+<div id="openAccountTab" class="tab-content active-tab">
+    <h2>Open a New Account</h2>
+    <label>Customer ID:</label>
+    <input type="text" id="customerID">
+    <label>Initial Credit:</label>
+    <input type="number" id="initialCredit">
+    <button class="btn" onclick="openAccount()">Open Account</button>
+    <p id="accountMessage"></p>
+</div>
+
+<!-- Customer Details Tab -->
+<div id="customerDetailsTab" class="tab-content">
+    <h2>View Customer Details</h2>
+    <label>Enter Customer ID:</label>
+    <input type="text" id="customerSearchID">
+    <button class="btn" onclick="getCustomerDetails()">Get Details</button>
+    <div id="customerDetails"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
