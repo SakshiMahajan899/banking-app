@@ -29,7 +29,7 @@ class SecurityConfig {
                 .csrf { it.disable() }
                 .authorizeHttpRequests { auth ->
                     auth
-                            .requestMatchers("/api/v1/deliveries/**").authenticated()
+                            .requestMatchers("/api/v1/**").authenticated()
                             .anyRequest().permitAll()
                 }
                 .httpBasic { }

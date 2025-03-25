@@ -13,9 +13,9 @@ class SwaggerConfig {
         return OpenAPI()
                 .info(
                         Info()
-                                .title("Delivery Service API")
+                                .title("Banking API")
                                 .version("1.0")
-                                .description("API documentation for the Delivery Service application")
+                                .description("API documentation for the Banking  application")
                 )
     }
 }

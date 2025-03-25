@@ -1,19 +1,20 @@
 package com.banking.technl.sandbox.model
 
-
+import com.banking.technl.sandbox.util.TransactionStatus
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.math.BigDecimal
 import java.time.LocalDateTime
 
 /**
- * Represents a transaction associated with an account.
+ * Entity representing a transaction.
  */
-
 @Document(collection = "transactions")
 data class Transaction(
-    @Id val id: String? = null,   // Unique transaction ID
-    val accountID: String,        // ID of the account the transaction belongs to
-    val amount: BigDecimal,       // Transaction amount
-    val timestamp: LocalDateTime = LocalDateTime.now() // Transaction timestamp
+    @Id
+    val id: String? = null,  // MongoDB auto-generated ID
+    val accountID: String,   // Reference to the account
+    val amount: BigDecimal,  // Transaction amount
+    val timestamp: LocalDateTime = LocalDateTime.now(), // Auto-generate timestamp
+    val status: TransactionStatus = TransactionStatus.SUCCESS // Default status to SUCCESS
 )

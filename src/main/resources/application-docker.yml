@@ -1,4 +1,3 @@
-invoice-service.url: "http://mock-api:8000"
 
 spring:
   data:
@@ -7,6 +6,3 @@ spring:
       #      uri: mongodb://mongo:27017/banking-db
       uri: mongodb://127.0.0.1:27017/
       database: banking-db  # Database name
-    redis:
-      host: redis
-      port: 6379

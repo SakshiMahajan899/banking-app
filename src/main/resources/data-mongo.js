@@ -38,22 +38,25 @@ db.accounts.insertMany([
     }
 ]);
 
-// Insert transactions related to the accounts
+// Insert transactions related to the accounts (Now includes status field)
 db.transactions.insertMany([
     {
         _id: "323e4567-e89b-12d3-a456-426614174000", // String IDs
         accountID: "223e4567-e89b-12d3-a456-426614174000",
         amount: 1000.00,
-        timestamp: dates.today
+        timestamp: dates.today,
+        status: "SUCCESS"
     },
     {
         _id: "323e4567-e89b-12d3-a456-426614174001", // String IDs
         accountID: "223e4567-e89b-12d3-a456-426614174001",
         amount: 500.00,
-        timestamp: dates.yesterday
+        timestamp: dates.yesterday,
+        status: "SUCCESS"
     }
 ]);
 
+// Ensure all customers have a first_name and last_name
 db.customers.updateMany(
     { first_name: { $exists: false } },
     { $set: { first_name: "Unknown" } }
