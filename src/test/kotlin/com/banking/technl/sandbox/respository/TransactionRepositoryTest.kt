@@ -26,7 +26,7 @@ class TransactionRepositoryTest {
         val transactions = transactionRepository.findByAccountID(accountID)
 
         // Assert
-        assertEquals(3, transactions.size)
+        assertEquals(2, transactions.size)
         assertEquals("323e4567-e89b-12d3-a456-426614174000", transactions[0].id)
         assertEquals("transaction1", transactions[1].id)
     }

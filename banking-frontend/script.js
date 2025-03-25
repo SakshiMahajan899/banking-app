@@ -1,75 +1,72 @@
-const apiBaseUrl = "http://application:8080/api";  // Backend API URL in Docker
-// Encode username and password for Basic Authentication
-const username = "user";
-const password = "password";
-const authHeader = "Basic " + btoa(`${username}:${password}`);
+const apiBaseUrl = "http://localhost:8080/api/v1"; // Base API URL
 
-
-// Open Account Function
+// Function to open a new account
 function openAccount() {
-    const customerID = document.getElementById("customerID").value;
-    const initialCredit = document.getElementById("initialCredit").value;
+    const customerID = document.getElementById("customerID").value.trim();
+    const initialCredit = document.getElementById("initialCredit").value.trim();
     const messageElement = document.getElementById("accountMessage");
 
     if (!customerID) {
-        messageElement.innerHTML = "Customer ID is required.";
+        messageElement.innerHTML = "❌ Customer ID is required.";
+        messageElement.style.color = "red";
         return;
     }
 
     fetch(`${apiBaseUrl}/open-account?customerID=${customerID}&initialCredit=${initialCredit}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" , "Authorization": authHeader  // Include Basic Auth}
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Basic dXNlcjpwYXNzd29yZA==", // Base64 encoded "user:password"
+        },
     })
-    .then(response => response.json())
-    .then(data => {
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to create account");
+        }
+        return response.json();
+    })
+    .then(() => {
         messageElement.innerHTML = "✅ Account created successfully!";
         messageElement.style.color = "green";
     })
-    .catch(error => {
+    .catch(() => {
         messageElement.innerHTML = "❌ Error creating account.";
         messageElement.style.color = "red";
     });
 }
 
-// Get Customer Details Function
+// Function to get customer details
 function getCustomerDetails() {
-    const customerID = document.getElementById("customerSearchID").value;
+    const customerID = document.getElementById("customerSearchID").value.trim();
     const detailsDiv = document.getElementById("customerDetails");
 
     if (!customerID) {
-        detailsDiv.innerHTML = "<p style='color:red;'>Please enter a customer ID.</p>";
+        detailsDiv.innerHTML = "<p style='color:red;'>❌ Please enter a customer ID.</p>";
         return;
     }
 
-    fetch(`${apiBaseUrl}/customer/${customerID}`,{
-     "Authorization": authHeader  // Include Basic Auth
+    fetch(`${apiBaseUrl}/customer/${customerID}`, {
+        method: "GET",
+        headers: {
+            "Authorization": "Basic dXNlcjpwYXNzd29yZA==", // Base64 encoded "user:password"
+        },
     })
-    }
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Customer not found");
+        }
+        return response.json();
+    })
     .then(data => {
+        const transactionsHTML = data.transactions;
         detailsDiv.innerHTML = `
-            <h3>${data.first_name} ${data.last_name}</h3>
+            <h3>${data.firstName} ${data.lastName}</h3>
             <p><strong>Balance:</strong> $${data.balance}</p>
             <h4>Transactions:</h4>
-            <ul>
-                ${data.transactions.map(txn => `<li>$${txn.amount} - ${txn.timestamp}</li>`).join("")}
-            </ul>
+            <ul>${transactionsHTML}</ul>
         `;
     })
-    .catch(error => {
-        detailsDiv.innerHTML = "<p style='color:red;'>Customer not found.</p>";
+    .catch(() => {
+        detailsDiv.innerHTML = "<p style='color:red;'>❌ Customer not found.</p>";
     });
-}
-
-// Tab Navigation
-function openTab(tabName) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active-tab');
-    });
-    document.getElementById(tabName).classList.add('active-tab');
-
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.classList.remove('active');
-    });
-    document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add('active');
 }

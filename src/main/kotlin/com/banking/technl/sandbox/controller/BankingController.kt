@@ -11,6 +11,7 @@ import java.math.BigDecimal
  * REST Controller for handling banking operations.
  */
 @RestController
+@CrossOrigin(origins = ["http://localhost:8082"])
 @RequestMapping("/api/v1")
 class BankingController(private val accountService: AccountService) {
     private val logger: Logger = LoggerFactory.getLogger(BankingController::class.java)
