@@ -27,7 +27,7 @@ class AccountRepositoryTest {
 
         // Assert
         assertEquals(2, accounts.size)
-        assertEquals("223e4567-e89b-12d3-a456-426614174000", accounts[0].id)
-        assertEquals("67e314555c19b7333804fa20", accounts[1].id)
+        assertEquals("account1", accounts[0].id)
+        assertEquals("account2", accounts[1].id)
     }
 }
