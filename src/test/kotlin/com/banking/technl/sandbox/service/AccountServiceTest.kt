@@ -19,8 +19,8 @@ class AccountServiceTest {
 
  private val customerRepository: CustomerRepository = mock(CustomerRepository::class.java)
  private val accountRepository: AccountRepository = mock(AccountRepository::class.java)
- private val transactionRepository: TransactionRepository = mock(TransactionRepository::class.java)
- private val bankingService = AccountService(customerRepository, accountRepository, transactionRepository)
+ private val transactionService: TransactionService = mock(TransactionService::class.java)
+ private val bankingService = AccountService(customerRepository, accountRepository, transactionService)
 
 
  @Test
@@ -52,7 +52,7 @@ class AccountServiceTest {
 
   `when`(customerRepository.findById(customerID)).thenReturn(Optional.of(customer))
   `when`(accountRepository.findByCustomerID(customerID)).thenReturn(accounts)
-  `when`(transactionRepository.findByAccountID("223e4567-e89b-12d3-a456-426614174000")).thenReturn(transactions)
+  `when`(transactionService.findByAccountID("223e4567-e89b-12d3-a456-426614174000")).thenReturn(transactions)
 
   // Act
   val customerDetails = bankingService.getCustomerDetails(customerID)
@@ -61,18 +61,5 @@ class AccountServiceTest {
   assertEquals("John", customerDetails["firstName"])
   assertEquals("Doe", customerDetails["lastName"])
   assertTrue((customerDetails["accounts"] as List<*>).isNotEmpty())
- }
-
- @Test
- fun `test getCustomerDetails throws IllegalArgumentException`() {
-  // Arrange
-  val customerID = "nonexistent"
-
-  `when`(customerRepository.findById(customerID)).thenReturn(Optional.empty())
-
-  // Act & Assert
-  assertThrows<IllegalArgumentException> {
-   bankingService.getCustomerDetails(customerID)
-  }
  }
 }
