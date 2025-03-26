@@ -7,28 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<h1>Banking System</h1>
+<header>
+    <h1>Banking System</h1>
+</header>
 
 <!-- Open Account Form -->
-<div class="container">
+<section class="container">
     <h2>Open Account</h2>
-    <label>Customer ID:</label>
-    <input type="text" id="customerID">
-    <label>Initial Credit:</label>
-    <input type="number" id="initialCredit">
+    <label for="customerID">Customer ID:</label>
+    <input type="text" id="customerID" placeholder="Enter your customer ID">
+    <label for="initialCredit">Initial Credit:</label>
+    <input type="number" id="initialCredit" placeholder="Enter initial credit">
     <button onclick="openAccount()">Open Account</button>
     <p id="accountMessage"></p>
-</div>
+</section>
 
 <!-- View Customer Details -->
-<div class="container">
+<section class="container">
     <h2>Customer Details</h2>
-    <label>Enter Customer ID:</label>
-    <input type="text" id="customerSearchID">
+    <label for="customerSearchID">Enter Customer ID:</label>
+    <input type="text" id="customerSearchID" placeholder="Enter customer ID">
     <button onclick="getCustomerDetails()">Get Details</button>
     <div id="customerDetails"></div>
-</div>
+</section>
 
 <script src="script.js"></script>
 </body>

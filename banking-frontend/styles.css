@@ -1,40 +1,73 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    text-align: center;
-}
 
-.container {
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    display: inline-block;
-    width: 300px;
-}
+        /* Embedded styling for simplicity; ideally should go to styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
 
-input {
-    display: block;
-    width: 90%;
-    margin: 5px auto;
-    padding: 5px;
-}
+        h1 {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            margin: 0;
+        }
 
-button {
-    background-color: blue;
-    color: white;
-    padding: 8px;
-    cursor: pointer;
-    border: none;
-}
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-button:hover {
-    background-color: darkblue;
-}
+        .container h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
 
-p {
-    font-weight: bold;
-}
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-#customerDetails {
-    margin-top: 10px;
-}
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #accountMessage {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #customerDetails {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
