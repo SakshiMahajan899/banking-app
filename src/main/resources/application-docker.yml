@@ -1,8 +1,16 @@
-
 spring:
+  application:
+    name: backend-assignment
   data:
     mongodb:
-
-      #      uri: mongodb://mongo:27017/banking-db
-      uri: mongodb://127.0.0.1:27017/
+      uri: mongodb://127.0.0.1:27017/  # Replace with your MongoDB URI
       database: banking-db  # Database name
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+appUserName: user
+password: password

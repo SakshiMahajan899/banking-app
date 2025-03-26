@@ -3,7 +3,7 @@ spring:
     name: backend-assignment
   data:
     mongodb:
-      uri: mongodb://localhost:27017/banking-db  # Replace with your MongoDB URI
+      uri: mongodb://127.0.0.1:27017/  # Replace with your MongoDB URI
       database: banking-db  # Database name
 
 management:

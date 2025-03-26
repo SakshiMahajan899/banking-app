@@ -1,39 +1,10 @@
 spring:
   application:
     name: backend-assignment
-  cache:
-    type: redis
   data:
     mongodb:
-      uri: mongodb://localhost:27017/delivery-db  # Replace with your MongoDB URI
-      database: delivery-db  # Database name
-    redis:
-      host: localhost
-      port: 6379
-
-delivery:
-  summary:
-    lookback-days: 1
-
-resilience4j:
-  retry:
-    instances:
-      sendInvoice:
-        maxAttempts: 3
-        waitDuration: 500ms
-  circuitbreaker:
-    instances:
-      sendInvoice:
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10000ms
-  ratelimiter:
-    instances:
-      sendInvoice:
-        limitForPeriod: 10
-        limitRefreshPeriod: 1s
-        timeoutDuration: 500ms
+      uri: mongodb://localhost:27017/banking-db  # Replace with your MongoDB URI
+      database: banking-db  # Database name
 
 management:
   endpoints:
@@ -43,8 +14,3 @@ management:
 
 appUserName: user
 password: password
-
-cache:
-  ttl: 3 # Time-to-live for cache entries 3 days
-
-invoice-service.url: "http://localhost:8000"
