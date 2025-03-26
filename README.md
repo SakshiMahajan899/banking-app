@@ -22,14 +22,7 @@ The assignment implement a Bank application using Spring boot that contains the 
 
 There are several ways to run a Spring Boot application on your local machine.
 
-### Method 1: Using Docker
-
-- Open cmd prompt and run
-  docker pull sakshi899/banking-app:v1.0.0
-- After image pull run the application by using below commad
-  docker run -p 8080:8080 sakshi899/banking-app:v1.0.0
-
-### Method 2: Using Git and Docker
+### Using Git and Docker
 
 - Clone the repository:
     - git clone https://github.com/SakshiMahajan899/banking-app.git
